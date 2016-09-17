@@ -7,10 +7,10 @@ import requests
 logger = logging.getLogger('Utils.HTTP')
 
 
-def get(url, headers=None, proxies=None, timeout=3, retry_times=5):
+def get(url, headers=None, params=None, proxies=None, timeout=3, retry_times=5):
     for i in range(retry_times):
         try:
-            rsp = requests.get(url, headers=headers, proxies=proxies, timeout=timeout)
+            rsp = requests.get(url, headers=headers, params=params, proxies=proxies, timeout=timeout)
             if rsp.status_code == 200:
                 return rsp
             if i+1 <= retry_times:
